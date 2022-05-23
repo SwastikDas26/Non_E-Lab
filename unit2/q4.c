@@ -1,32 +1,33 @@
 #include <stdio.h>
 
-int main() {
-    int n;
-    printf("enter the number: ");
-    scanf("%d",&n);
-    
-    int i = 1;
-    while(i<=n){
-        int j = 1;
-        
-        while(j<=i){
-            printf("%d",j);
-            j++;
+int main()
+{
+    int i, j, N;
+
+    printf("Enter N: ");
+    scanf("%d", &N);
+
+    // Prints upper part of the pattern
+    for (i = 1; i <= N; i++)
+    {
+        for (j = 1; j <= i; j++)
+        {
+            printf("%d", j);
         }
+
         printf("\n");
-        i++;
-        
     }
-    
-    int x = n;
-    while(x>=0){
-        int y = 1;
-        while(y<=x){
-            printf("%d",y);
-            y++;
+
+    // Print lower part of the pattern
+    for (i = N - 1; i >= 1; i--)
+    {
+        for (j = 1; j <= i; j++)
+        {
+            printf("%d", j);
         }
+
         printf("\n");
-        x--;
     }
+
     return 0;
 }
