@@ -1,33 +1,46 @@
 #include <stdio.h>
+
+int reverse(int n)
+{
+	int rev = 0;
+	while (n != 0) {
+		rev = (rev * 10) + (n % 10);
+		n /= 10;
+	}
+	return rev;
+}
+
 int main()
 {
-    int num, opt, sum = 0;
-    printf("Enter a number : ");
-    scanf("%d", &num);
+    
+    int n;
+    printf("Enter a number\n");
+    scanf("%d",&n);
+	n = reverse(n);
+	int so = 0, se = 0, c = 1, choice;
 
-    printf("Enter 0 to get sum of digits in even position.\n");
-    printf("Enter 1 to get sum of digits in odd position.\n");
-    printf("Enter the option required : ");
-    scanf("%d", &opt);
+	while (n != 0) {
 
-    if (opt == 0)
+		if (c % 2 == 0)
+			se += n % 10;
+		else
+			so += n % 10;
+		n /= 10;
+		c++;
+	}
+    printf("Enter choice\n");
+    scanf("%d", &choice);
+
+    switch(choice)
     {
-        while (num != 0)
-        {
-            sum = sum + num % 10;
-            num = num / 100;
-        }
-        printf("The sum of digits in even position is : %d", sum);
-    }
-
-    if (opt == 1)
-    {
-        while (num != 0)
-        {
-            num = num / 10;
-            sum = sum + num % 10;
-            num = num / 10;
-        }
-        printf("The sum of digits in odd position is : %d", sum);
-    }
+        case 0:
+            printf("Even Sum:  %d",se);
+            break;
+        case 1:
+            printf("Odd Sum:  %d",so);
+            break;
+        default:
+            printf("Wrong choice\n");
+    }   
+	return 0;
 }
