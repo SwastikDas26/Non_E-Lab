@@ -1,39 +1,33 @@
 #include <stdio.h>
 int main()
 {
-    int n, num ,rem ,odd = 0, even = 0, digit, input;
-    printf("  Enter an integer number: ");
+    int num, opt, sum = 0;
+    printf("Enter a number : ");
     scanf("%d", &num);
-    printf("Enter 0 or 1\n");
-    scanf("%d", &n);
-    input = num;
-    // num = abs(num);
 
-    if( n == 0 || n == 1)
+    printf("Enter 0 to get sum of digits in even position.\n");
+    printf("Enter 1 to get sum of digits in odd position.\n");
+    printf("Enter the option required : ");
+    scanf("%d", &opt);
+
+    if (opt == 0)
     {
-        if(n == 0)
+        while (num != 0)
         {
-            while(num > 0)
-            {
-                digit = num % 10;
-                num = num / 10;
-                rem = digit % 2;
-                if(rem == 0)
-                    even = even + digit;
-            }
-            printf("\n  The sum of even digits present in %d is %d.",input,even);
+            sum = sum + num % 10;
+            num = num / 100;
         }
-        else if( n == 1)
-        {
-            while(num > 0)
-            {
-                digit = num % 10;
-                num = num / 10;
-                rem = digit % 2;
-                if(rem != 0)
-                    odd=odd+digit;
-            }
-            printf("\n  The sum of Odd digits present in %d is %d.",input,odd);
-        }
+        printf("The sum of digits in even position is : %d", sum);
     }
-}   
+
+    if (opt == 1)
+    {
+        while (num != 0)
+        {
+            num = num / 10;
+            sum = sum + num % 10;
+            num = num / 10;
+        }
+        printf("The sum of digits in odd position is : %d", sum);
+    }
+}
